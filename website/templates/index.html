@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title -->
+    <title>互联网企业财务危机预警系统</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/money_5_coins.ico') }}">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <!-- CSS Style Ourselves -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor.min.css') }}">
+    <!-- CSS Space Template -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.min.css') }}?v=1.0">
+    <!-- fslightbox-styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fslightbox_styles.css') }}">
+    <!-- githubLogoAnim -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/githubLogoAnim.css') }}">
+    <!-- dselect style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dselect.css') }}">
+    <!-- clipboard.min.js -->
+    <script src="{{ url_for('static', filename='js/clipboard.min.js') }}"></script>
+</head>
+<body>
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="content" role="main">
+        <div class="bg-primary-dark position-relative overflow-hidden">
+            <div class="container content-space-2">
+                <div class="row justify-content-center align-items-lg-center">
+                    <div class="row justify-content-center align-items-lg-center">
+                        <!-- Heading -->
+                        <div class="pe-lg-3 mb-7">
+                            <h1 class="display-3 text-white mb-3 mb-md-5 head_more_margin">Pre-warning system on financial risk<br>for every
+                                <span class="text-warning">
+                                    <span class="js-typedjs" data-hs-typed-options="{
+                                        &quot;strings&quot;: [&quot;investor.&quot;, &quot;startup.&quot;],
+                                        &quot;typeSpeed&quot;: 90,
+                                        &quot;loop&quot;: true,
+                                        &quot;backSpeed&quot;: 30,
+                                        &quot;backDelay&quot;: 2500
+                                        }"></span>
+                                </span>
+                            </h1>
+                            <p class="lead text-white-70 head_more_margin"><i class="bi bi-bookmark-heart"></i> This pre-warning system is basically used to help Internet companies and investors detect latent financial risk.</p>
+                        </div>
+
+                    <!-- End Heading -->
+                    </div>
+                    <!-- End Col -->
+                    <div class="row justify-content-center align-items-lg-center">
+                        <div class="ps-lg-5">
+
+                            {% if score is defined %}
+                            <!-- Result Show -->
+                            <div id="result_mod" class="card card-lg card-transition result-card bg-warning bg-gradient border border-2 border-warning">
+                                <style type="text/css">
+                                    @keyframes refer-color {
+                                    0% {background-color: #9b2226}
+                                    50% {background-color: #bb3e03}
+                                    100% {background-color: #9b2226}
+                                    }
+                                </style>
+                                <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill refer-tip">结果仅供参考</span>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Score -->
+                                        <div class="col text-center">
+                                            <!-- Add Shadow Box Style To Circle -->
+                                            <style type="text/css">
+                                                .pie{
+                                                    position: relative;
+                                                    border-radius: 50%;
+                                                    box-shadow: inset 0 0 25px 10px {{ res_info['circle'][2] }};
+                                                }
+                                            </style>
+                                            <div class="pie score-show" data-pie='{"percent": {{ score }}, "size": 150, "round": true, "animationSmooth": "0.3s ease-out", "lineargradient": ["{{ res_info['circle'][0] }}","{{ res_info['circle'][1] }}"]}'></div>
+                                        </div>
+                                        <!-- End Score -->
+                                        <!-- Review -->
+                                        <div class="col-sm-9 mt-5">
+                                            <h5 class="card-title" style="color: {{ res_info['text'][0] }};">预测结果：{{ res_info['content'][0] }} <i class="bi bi-award-fill"></i></h5>
+                                            <p class="card-text res-content" style="color: {{ res_info['text'][1] }};">{{ res_info['content'][1] }}</p>
+                                        </div>
+                                        <!-- End Review -->
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+
+                                    <!-- Result Operation -->
+                                    <div class="text-end mt-5">
+                                        <span id="res_information" class="badge" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<div><p class=&quot;card-text&quot;>我们将财务状况划分为 3 类：</p></div><div class=&quot;info-text info-text-grade2&quot;>99 - 70：财务状况良好</div><div class=&quot;info-text info-text-grade1&quot;>69 - 40：有潜在的财务风险</div><div class=&quot;info-text info-text-grade0&quot;>39 - 01：存在严重的财务风险</div>">
+                                            <style type="text/css">
+                                                @keyframes info-color {
+                                                    0% {color: #023e8a}
+                                                    50% {color: #0077b6}
+                                                    100% {color: #023e8a}
+                                                }
+                                            </style>
+                                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                                <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                                </symbol>
+                                            </svg>
+                                            <svg class="bi flex-shrink-0 me-2 info-button" width="18" height="18" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                                        </span>
+                                        <span id="share_res" class="clipboard badge btn rounded-pill btn-success res-pros-btn0 res-pros-btn" data-bs-toggle="collapse" data-bs-target="#copy_tip" onclick="set_copy_url('{{ score }}');">分享结果</span>
+                                        <span id="clear_data" class="badge rounded-pill bg-secondary res-pros-btn">清空数据</span>
+                                        <!-- JS Result Function -->
+                                        <script src="{{ url_for('static', filename='js/res_func.js') }}"></script>
+                                    </div>
+                                    <!-- End Result Operation -->
+                                    <!-- End Row -->
+
+                                    <!-- Copy Successful Tips -->
+                                    <div id="copy_tip" class="collapse">
+                                        <div class="alert alert-primary alert-dismissible fade show mt-5" role="alert">
+                                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                                </symbol>
+                                            </svg>
+                                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                            <strong>复制到剪贴板成功！</strong> 已生成您评估结果的 &nbsp<a id="exclusive_link" class="exclusive-link" target="_blank" onclick="exe_link();">专属链接</a>&nbsp，快去和同事/朋友分享吧！
+                                            <button id="close_copy_tip" type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#copy_tip" onclick="close_collapse();"></button>
+                                        </div>
+                                    </div>
+                                    <!-- End Copy Successful Tips -->
+                                    <!-- End Row -->
+                                </div>
+                            </div>
+                            <!-- JS Circular Master -->
+                            <script src="{{ url_for('static', filename='js/circularProgressBar.min.js') }}"></script>
+                            <script type="text/javascript">
+                                // INITIALIZATION OF CIRCULAR MASTER
+                                // =======================================================
+                                const circle = new CircularProgressBar('pie');
+                                circle.initial();
+                            </script>
+                            <!-- End Result Show -->
+                            {% endif %}
+
+                            <div class="card card-lg card-transition result-card">
+                                <div class="card-body">
+                                    <!-- Accordion -->
+                                    <div class="accordion accordion-flush" id="accordionFAQ">
+                                        <!-- Accordion Item -->
+                                        <div class="accordion-item">
+                                            <div class="accordion-header" id="headingOne">
+                                                <a class="accordion-button" role="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="bi bi-chat-square-dots-fill"></i> &nbsp 我们做了些什么？</a>
+                                            </div>
+                                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ" style="">
+                                                <div class="accordion-body">
+                                                    近年来，
+                                                    随着宽带中国战略的落幕与大数据战略的持续实施，我国对于信息技术产业的关注有增无减。
+                                                    在互联网+政策的支持下，互联网企业数量激增。
+                                                    然而，针对中国市场的互联网企业进行特色化设计且真正落地的财务预警模型较少，
+                                                    现存的大多数预警模型与互联网企业的独特运营模式和财务特性匹配度不足，
+                                                    对于互联网企业发生财务危机的预警结果精度低。
+                                                    基于财务危机预警领域研究现状，我们将上市公司在股市中被特殊处理的情况（ST）视作发生财务危机，
+                                                    从东方财富和前瞻眼财报数据库爬取相关数据，获得了我国A股互联网上市公司财务危机发生前一年的财务数据，
+                                                    总结和归纳互联网企业特点，针对性地选取互联网企业的财务和非财务预警21个指标进行因子分析。
+                                                    在PAC数据降维后，搭建BP神经网络模型，Z-Score标准化样本，7:3划分训练集和测试集，
+                                                    分别设置隐层、输出层激活函数为tanh和softmax，使用截断高斯分布初始化权值矩阵，添加L1-L2正则化项，
+                                                    对模型参数进行训练和调优，最终，编译所得模型在F1-Score指标和AUC值上表现良好，
+                                                    得出适合于中国互联网企业的财务危机预警模型。利用该模型制作财务风险评估网站，
+                                                    输入互联网企业数据指标后，网站就能给出的评分结果，以此判断财务危机的严重程度，
+                                                    为大中小互联网企业的财务健康情况提供指引，为公司管理者和投资者规避风险提供了保障。
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Accordion Item -->
+                                    <!-- End Accordion -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card -->
+                            <div class="card card-lg">
+                                <!-- Demo Selection -->
+                                <div id="demo_selection" class="position-absolute top-0 end-0 p-3" style="z-index: 11">
+                                    <select class="form-select" id="dropdown_selection_demo" onchange="demo_selected();">
+                                        <option value="">选择企业(Demo)</option>
+                                    </select>
+                                    <script src="{{ url_for('static', filename='js/demo_data.js') }}"></script>
+                                </div>
+                                <!-- End Demo Selection -->
+                                <!-- Card -->
+                                <div class="card-body">
+                                    <div class="row align-items-sm-center mb-5">
+                                        <div class="col-sm">
+                                            <h5 class="card-title">公司数据指标</h5>
+                                            <p class="card-text">请填写您所属公司的各项数据指标，以帮助系统完成财务风险预测分析任务！</p>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+                                    <!-- Form -->
+                                    <form method="post" action="{{ url_for('predict_pro') }}" role="form">
+                                        <div id="num_check" class="row">
+
+                                            <!-- Left Col -->
+                                            <div id="left_col_form" class="col-sm-6 mb-3 mb-sm-0">
+                                            {% for item in left_form['items'] %}
+                                                <!-- Form -->
+                                                <div class="mb-4">
+                                                    <label id="label_{{ left_form['id'][loop.index0] }}" class="form-label" for="{{ left_form['id'][loop.index0] }}">{{ left_form['tips'][loop.index0] }}</label>
+                                                    <input type="text" class="form-control form-control-lg" oninput="if(value.length>9) value=value.slice(0,9); value=value.replace(/[^\d-.]/g,''); number_check(this);" name="{{ left_form['id'][loop.index0] }}" id="{{ left_form['id'][loop.index0] }}" placeholder="{{ item }}" aria-label="{{ item }}" required="" data-msg="Data required!" value="{% if left_form['id'][loop.index0][-3:] in record_value %}{{ record_value[left_form['id'][loop.index0][-3:]] }}{% endif %}">
+                                                </div>
+                                                <!-- End Form -->
+                                            {% endfor %}
+                                            <!-- End Left Col -->
+                                            </div>
+
+                                            <!-- Right Col -->
+                                            <div id="right_col_form" class="col-sm-6">
+                                                {% for item in right_form['items'] %}
+                                                    <!-- Form -->
+                                                    <div class="mb-4">
+                                                        <label id="label_{{ right_form['id'][loop.index0] }}" class="form-label" for="{{ right_form['id'][loop.index0] }}">{{ right_form['tips'][loop.index0] }}</label>
+                                                        <input type="text" class="form-control form-control-lg" oninput="if(value.length>9) value=value.slice(0,9); value=value.replace(/[^\d-.]/g,''); number_check(this);" name="{{ right_form['id'][loop.index0] }}" id="{{ right_form['id'][loop.index0] }}" placeholder="{{ item }}" aria-label="{{ item }}" required="" data-msg="Data required!" value="{% if right_form['id'][loop.index0][-3:] in record_value %}{{ record_value[right_form['id'][loop.index0][-3:]] }}{% endif %}">
+                                                    </div>
+                                                    <!-- End Form -->
+                                                {% endfor %}
+                                            </div>
+                                            <!-- End Right Col -->
+
+                                        </div>
+                                        <!-- End Row -->
+
+                                        <!-- Check Form -->
+                                        <div id="check_form_box">
+                                            {% for item in selection %}
+                                                <!-- Form Check -->
+                                                <div class="mb-4">
+                                                    <label class="form-label" for="">{{ item[1] }}</label>
+                                                    <div class="row">
+                                                        {% for select in item[2] %}
+                                                            <!-- Form Check Item -->
+                                                            <div class="col-sm{% if loop.first %} mb-4 mb-sm-0{% endif %}">
+                                                                <label class="form-control form-control-lg" for="{{ select[0] }}">
+                                                                    <span class="form-check form-check-custom">
+                                                                        <input type="radio" class="form-check-input" value="{{ loop.revindex0 }}" name="{{ item[0] }}" id="{{ select[0] }}" {% if loop.first %}checked="" {% elif record_value[item[0][-3:]] == loop.revindex0~"" %} checked="" {% endif %}>
+                                                                        <span class="form-check-label">{{ select[1] }}</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                            <!-- End Form Check Item-->
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <!-- End Form Check -->
+                                            {% endfor %}
+                                        </div>
+                                        <!-- End Check Form -->
+
+                                        <!-- Submit -->
+                                        <div class="d-grid text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg" onclick="return submit_check();">Start your prediction & analysis!</button>
+                                            <span class="form-text">Need help? Or want to find out how it works? <a class="link" href="/"> Visit our Documentation <i class="bi-chevron-right small ms-1"></i></a></span>
+                                            <!-- Github Logo -->
+                                            <a class="social-link social-link--github" id="github" target="_blank" href="https://github.com/sylvanding/detect-financial-risk/">
+                                                <svg class="social-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                                    <g class="social-group" fill="none" fill-rule="evenodd">
+                                                        <circle class="social-group__outline" stroke="#000" stroke-width="20" cx="300" cy="300" r="262.5"></circle>
+                                                        <circle class="social-group__inner-circle" fill="#000" cx="300" cy="300" r="252.5"></circle>
+                                                        <path class="social-group__icon" d="M300 150c-82.8348 0-150 68.8393-150 153.817 0 67.9687 42.991 125.558 102.5893 145.9151 7.5 1.4063 10.2455-3.3482 10.2455-7.433 0-3.683-.134-13.3259-.2009-26.183-41.7187 9.308-50.558-20.625-50.558-20.625-6.8304-17.7456-16.6741-22.5-16.6741-22.5-13.5938-9.576 1.0044-9.375 1.0044-9.375 15.067 1.0714 22.9688 15.8705 22.9688 15.8705 13.3929 23.5045 35.0893 16.741 43.6607 12.7902 1.3393-9.9107 5.2232-16.741 9.509-20.558-33.2813-3.884-68.3036-17.076-68.3036-76.0045 0-16.808 5.8259-30.5357 15.4018-41.25-1.5402-3.884-6.6965-19.5536 1.4732-40.7143 0 0 12.5893-4.1518 41.25 15.7366 11.9866-3.4152 24.7768-5.0893 37.567-5.1562 12.7231.067 25.5803 1.741 37.5669 5.1562 28.6607-19.8884 41.183-15.7366 41.183-15.7366 8.1697 21.1607 3.0134 36.8304 1.4733 40.7143 9.5758 10.7812 15.4017 24.509 15.4017 41.25 0 59.0625-35.0892 72.0536-68.5044 75.8705 5.3571 4.7545 10.1785 14.1295 10.1785 28.4598 0 20.558-.2009 37.1652-.2009 42.1875 0 4.0849 2.6786 8.9063 10.3125 7.3661C407.076 429.308 450 371.7187 450 303.817 450 218.8393 382.8348 150 300 150z" fill="#FFF" fill-rule="nonzero"></path>
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                            <!-- End Github Logo -->
+                                        </div>
+                                        <!-- End Submit -->
+
+                                    </form>
+                                    <!-- End Form -->
+                                </div>
+                            </div>
+                            <!-- End Card -->
+                        </div>
+                    </div>
+                    <!-- End Col -->
+                </div>
+            </div>
+            <!-- ========== FOOTER AND COPYRIGHT ========== -->
+            <footer class="form-text footer"> <a class="footer-link" href="{{ url_for('index_page') }}" title="HQU互联网企业财务危机检测系统">© 2021 互联网企业财务危机检测系统</a>  <a class="footer-link" href="http://beian.miit.gov.cn/"; target=_blank>皖ICP备2021002841号</a></footer>
+
+        <!-- Background Shapes -->
+        <div class="position-absolute top-0 end-0">
+            <img draggable="false" src="{{ url_for('static', filename='img/shape-3-soft-light.svg') }}" alt="SVG" width="500">
+        </div>
+        <div class="position-absolute bottom-0 start-0">
+            <img draggable="false" src="{{ url_for('static', filename='img/shape-2-soft-light.svg') }}" alt="SVG" width="400">
+        </div>
+        <!-- End Background Shapes -->
+
+        </div>
+    </main>
+
+    {% if notification is defined %}
+    <!-- Notification -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"  data-bs-autohide="false">
+            <div class="toast-header">
+                <i class="bi bi-code-slash rounded me-2"></i>
+                <strong class="me-auto">{{ notification['title'] }}</strong>
+                <small>{{ notification['time'] }}</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {{ notification['content'] }}
+                <i class="bi bi-emoji-smile"></i>
+            </div>
+        </div>
+    </div>
+    <!--End Notification -->
+    {% endif %}
+
+    <!-- ========== IMPORT JS ========== -->
+    <!-- JS Implementing Plugins -->
+    <script src="{{ url_for('static', filename='js/vendor.min.js') }}"></script>
+    <!-- JS Space -->
+    <script src="{{ url_for('static', filename='js/theme.min.js') }}"></script>
+    <!-- JS Number Check -->
+    <script src="{{ url_for('static', filename='js/number_check.js') }}"></script>
+    <!-- JS dselect -->
+    <script src="{{ url_for('static', filename='js/dselect.js') }}"></script>
+    <!-- JS Plugins Init. -->
+    <script src="{{ url_for('static', filename='js/initPlugins.js') }}"></script>
+
+    {% if notification is defined %}
+    <!-- ========== Toast Notification ========== -->
+    <script type="text/javascript">
+        let toastLive = document.getElementById('liveToast');
+        let toast = new bootstrap.Toast(toastLive);
+        toast.show();
+    </script>
+    {% endif %}
+
+    <!-- ========== DATA TYPED ANIMATION ========== -->
+    <style type="text/css" data-typed-js-css="true">
+        .typed-cursor{
+          opacity: 1;
+        }
+        .typed-cursor.typed-cursor--blink{
+          animation: typedjsBlink 0.7s infinite;
+          -webkit-animation: typedjsBlink 0.7s infinite;
+                  animation: typedjsBlink 0.7s infinite;
+        }
+        @keyframes typedjsBlink{
+          50% { opacity: 0.0; }
+        }
+        @-webkit-keyframes typedjsBlink{
+          0% { opacity: 1; }
+          50% { opacity: 0.0; }
+          100% { opacity: 1; }
+        }
+    </style>
+
+<!-- Designed by Sylvan Ding E-mail: sylvanding@qq.com -->
+<!-- Based on Bootstrap5, HtmlStream, Zeno Rocha, tomik23 -->
+</body>
+</html>

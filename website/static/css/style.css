@@ -1,0 +1,92 @@
+.head_more_margin{
+    margin: 1rem;
+}
+
+.result-card{
+    margin-bottom: 2rem;
+}
+
+.score-show{
+    display: inline-block;
+}
+
+.res-pros-btn0{
+    margin-right: 0.5rem;
+}
+
+.res-pros-btn{
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.res-content{
+    margin-top: 0.8rem;
+}
+
+.exclusive-link{
+    cursor: pointer;
+    text-decoration: underline;
+    color: white;
+}
+
+.exclusive-link:hover{
+    color: #fef3cd;
+}
+
+.num-check-wrong{
+    color: white;
+    background-color: #e63946;
+    border-radius: 0.3rem;
+    border: #6a040f 2px;
+}
+
+.num-check-wrong:hover{
+    background-color: #dc2f02;
+}
+
+.num-check-wrong-text{
+    color: #e63946;
+}
+
+.num-check-right{
+    color: #43aa8b;
+}
+
+.info-button{
+    cursor: pointer;
+    animation: info-color 3s infinite;
+}
+
+.refer-tip{
+    animation: refer-color 3s infinite;
+}
+
+.info-button:hover{
+    color: #03045e;
+}
+
+.info-text{
+    text-align: left;
+    margin-top: 0.3rem;
+}
+
+.info-text-grade2{
+    color: #52b69a;
+}
+
+.info-text-grade1{
+    color: #0dcaf0;
+}
+
+.info-text-grade0{
+    color: #ff758f;
+}
+
+.footer{
+    text-align: center;
+}
+
+.footer-link:hover{
+    color: white;
+}
+

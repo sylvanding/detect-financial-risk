@@ -1,0 +1,39 @@
+#github{
+  margin-top: 0.8rem;
+}
+.social-svg{
+  cursor: pointer;
+}
+.social-link--github {
+  color: #000;
+}
+.social-link .social-svg {
+  width: 2rem;
+  height: 2rem;
+}
+.social-link .social-svg .social-group__icon {
+  fill: #191308;
+  transition: all 0.2s;
+}
+.social-link .social-svg .social-group__inner-circle {
+  fill: transparent;
+  transition: all 0.2s;
+}
+.social-link .social-svg .social-group__outline {
+  stroke: #191308;
+  transform-origin: 50% 50%;
+  transition: all 0.2s;
+}
+.social-link .social-svg:hover .social-group__icon, .social-link .social-svg:active .social-group__icon, .social-link .social-svg:focus .social-group__icon {
+  fill: #fffbfa;
+  transition: all 0.45s;
+}
+.social-link .social-svg:hover .social-group__inner-circle, .social-link .social-svg:active .social-group__inner-circle, .social-link .social-svg:focus .social-group__inner-circle {
+  fill: currentColor;
+  transition: all 0.45s;
+}
+.social-link .social-svg:hover .social-group__outline, .social-link .social-svg:active .social-group__outline, .social-link .social-svg:focus .social-group__outline {
+  stroke: currentColor;
+  transform: scale(1.1);
+  transition: all 0.45s;
+}
