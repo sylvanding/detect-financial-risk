@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def generate():
 
     # Begin: Data Input Items

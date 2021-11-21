@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def res_info_generate(score):
 
     # range('low', 'high')

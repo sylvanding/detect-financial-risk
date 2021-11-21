@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+import warnings
+warnings.simplefilter(action='ignore', category=Warning)
 import numpy as np
 from tensorflow.keras.models import load_model
 
@@ -14,13 +17,13 @@ def predictFinRisk(fin_ind):
     # calculate factor scores
     component_path = 'ComponentScoreCoefficient.csv'
     coefficient = np.loadtxt(component_path, dtype=np.float, delimiter=',')
-    factors = np.asarray(fin_ind) @ coefficient
+    factors = np.dot(np.asarray(fin_ind), coefficient)
     # Z-score the factors
     zscore_path = 'ZscoreMeanandStd.csv'
     zscore = np.loadtxt(zscore_path, dtype=np.float, delimiter=',')
     factors = (factors - zscore[0, :]) / zscore[1, :]
     # predict probability
-    probability = model.predict([list(factors)])
+    probability = model.predict(factors.reshape(1,-1))
     return probability[0][1]*100
 
 

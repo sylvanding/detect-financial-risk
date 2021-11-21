@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, redirect, url_for
 import form_generate
 from res_info import *

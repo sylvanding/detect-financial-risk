@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def note_generate():
     return {'title': 'Notification',
             'time': '11.15.2021',
