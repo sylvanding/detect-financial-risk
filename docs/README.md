@@ -22,6 +22,10 @@ http://eco.sylvanding.online
 
 网站使用Flask框架搭建，采用uWSGI+Nginx部署方案，基本实现了财务危机预测的功能，您可以通过Demo选择我们预置的互联网企业数据。
 
+# 开发文档
+
+http://sylvanding.github.io/detect-financial-risk/
+
 # 项目成员
 
 * 安紫淇 [i]
